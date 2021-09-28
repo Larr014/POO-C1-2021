@@ -7,3 +7,7 @@ class Persona:
     def mostrar(self):
         print(f'Nombre: {self.__nombre}')
         print(f'Rut: {self.__rut}')
+
+    #Crear una funcion que me permite retornar el rut
+    def get_rut(self):
+        return self.__rut

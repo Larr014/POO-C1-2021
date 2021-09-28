@@ -4,8 +4,9 @@ class Empresa:
 
 
 
-    def __init__(self,nombre):
-        self.__nombre = nombre
+    def __init__(self):
+        self.__id = input('Ingrese id de la empresa: ')
+        self.__nombre = input('Ingrese nombre de la empresa: ')
         self.__empleados = [] #Una empresa tiene una lista de empleados
         self.__clientes = [] #Una empresa tiene una lista de clientes
 
@@ -33,6 +34,37 @@ class Empresa:
         for c in self.__clientes: #Por cada cliente de la lista
             c.mostrar() #Muestra sus datos
     
+    def eliminar_cliente(self):
+        #Necesito conocer el cliente
+            rut = input("Ingrese rut del cliente a eliminar: ")
+            for cliente in self.__clientes:
+                if cliente.get_rut() == rut: #Comparo el rut de cada cliente con el rut ingresado por el usuario
+                    #Sacarlo de la empresa
+                    self.__clientes.remove(cliente) 
+
+    def agregar_empleado(self):
+        e = Empleado() #Creo el empleado dentro de la empresa
+        self.__empleados.append(e)
+
+    def mostrar_empleados(self):
+        for empleado in self.__empleados:
+            empleado.mostrar()
+
+    def eliminar_empleado(self):
+        self.mostrar_empleados()
+        #Necesito conocer el cliente
+        rut = input("Ingrese rut del empleado a eliminar: ")
+        for empleado in self.__empleados:
+            if empleado.get_rut() == rut: #Comparo el rut de cada cliente con el rut ingresado por el usuario
+            #Sacarlo de la empresa
+                self.__empleados.remove(empleado) 
+
     def mostrar(self):
         print(f"Nombre: {self.__nombre}")
+
+    def get_id(self):
+        return self.__id
+
+    
+
         
