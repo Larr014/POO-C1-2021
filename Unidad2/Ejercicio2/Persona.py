@@ -1,13 +1,14 @@
 class Persona:
 
-    def __init__(self):
-        self.__fullname = input("Ingrese nombre: ")
-        self.__profession = input("Ingrese profesion: ")
-        self.__birth = input("Ingrese fecha de nacimiento (Año-Mes-dia): ")
-        self.__genre = input("Ingrese genero (M/F): ")
-        self.__bodyweight = float(input("Ingrese peso: "))
-        self.__height = float(input("Ingrese altura: "))
-        self.__nationality = input("Ingrese nacionalidad: ")
+    def __init__(self,fullname,profession,birth,genre,bodyweight,height,nationality,id=''):
+        self.__fullname = fullname
+        self.__profession = profession
+        self.__birth = birth
+        self.__genre = genre
+        self.__bodyweight = bodyweight
+        self.__height = height
+        self.__nationality = nationality
+        self.__id = id
 
     #Cuando un atributo es privado la unica opcion de obtener dicho atributo desde otra parte es con un get
     def get_fullname(self):
@@ -30,3 +31,6 @@ class Persona:
 
     def get_nationality(self):
         return self.__nationality
+
+    def set_fullname(self,fullname):
+        self.__fullname = fullname
