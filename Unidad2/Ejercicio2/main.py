@@ -15,7 +15,13 @@ def registrar_persona():
 
 def buscar_persona():
     id = input("Ingrese id de la persona a buscar: ")
-    crud.buscar_persona_id(id)
+    tupla = crud.buscar_persona_id(id)
+    if tupla != None:
+        print(tupla)
+        p = Persona(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],id)
+        return p
+    else:
+        print("La persona no se encuentra registrada")
 
 
 def modificar_persona():
@@ -23,37 +29,52 @@ def modificar_persona():
     #Buscar campos actuales de la persona
     tupla = crud.buscar_persona_id(id)
     #Creamos un objeto de la persona con sus campos actuales
-    p = Persona(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],id)
 
-    #Preguntar por cada campo que el usuario quiera modificar
-    #En caso que si quiera modificar, debemos hacer un set al campo que corresponda
+    if tupla != None:
+        p = Persona(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],id)
 
-    respuesta = input("Desea modificar el nombre: s/n ")
-    if respuesta.lower() == 's':
-        nombre = input("Ingrese nombre: ")
-        p.set_fullname(nombre)
-    respuesta = input("Desea modificar la profesion: s/n ")
-    if respuesta.lower() == 's':
-        profesion = input("Ingrese profesion: ")
-    respuesta = input("Desea modificar fecha nacimiento: s/n ")
-    if respuesta.lower() == 's':
-        fecha = input("Ingrese fecha nacimiento: ")
-    respuesta = input("Desea modificar genero: s/n ")
-    if respuesta.lower() == 's':
-        genero = input("Ingrese genero: M/F ")
-    respuesta = input("Desea modificar el peso: s/n ")
-    if respuesta.lower() == 's':
-        peso = input("Ingrese peso: ")
-    respuesta = input("Desea modificar la altura: s/n ")
-    if respuesta.lower() == 's':
-        altura = input("Ingrese altura: ")
-    respuesta = input("Desea modificar la nacionalidad: s/n ")
-    if respuesta.lower() == 's':
-        nacionalidad = input("Ingrese nacionalidad: ")
-    crud.modificar_persona(p)
+        #Preguntar por cada campo que el usuario quiera modificar
+        #En caso que si quiera modificar, debemos hacer un set al campo que corresponda
+
+        respuesta = input("Desea modificar el nombre: s/n ")
+        if respuesta.lower() == 's':
+            nombre = input("Ingrese nombre: ")
+            p.set_fullname(nombre)
+        respuesta = input("Desea modificar la profesion: s/n ")
+        if respuesta.lower() == 's':
+            profesion = input("Ingrese profesion: ")
+            p.set_profession(profesion)
+        respuesta = input("Desea modificar fecha nacimiento: s/n ")
+        if respuesta.lower() == 's':
+            fecha = input("Ingrese fecha nacimiento: ")
+            p.set_birth(fecha)
+        respuesta = input("Desea modificar genero: s/n ")
+        if respuesta.lower() == 's':
+            genero = input("Ingrese genero: M/F ")
+            p.set_genre(genero)
+        respuesta = input("Desea modificar el peso: s/n ")
+        if respuesta.lower() == 's':
+            peso = input("Ingrese peso: ")
+            p.set_bodyweight(peso)
+        respuesta = input("Desea modificar la altura: s/n ")
+        if respuesta.lower() == 's':
+            altura = input("Ingrese altura: ")
+            p.set_height(altura)
+        respuesta = input("Desea modificar la nacionalidad: s/n ")
+        if respuesta.lower() == 's':
+            nacionalidad = input("Ingrese nacionalidad: ")
+            p.set_nationality(nacionalidad)
+        crud.modificar_persona(p)
+    else:
+        print("La Persona no se encuentra registrada")
 
 def eliminar_persona():
-    pass
+    p = buscar_persona()
+    if p != None:
+        opcion = input("Desea eliminar a esta persona: s/n ")
+        if opcion.lower() == 's':
+            crud.eliminar_persona(p)
+    
 
 def mostrar_personas():
     crud.mostrar_personas()

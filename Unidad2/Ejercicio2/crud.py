@@ -30,11 +30,17 @@ def buscar_persona_id(id):
     val = (id,)
     cursor.execute(query,val)
     tupla = cursor.fetchone()
-    print(tupla)
+    
     return tupla
 
 def modificar_persona(id,nombre,profesion,fecha,genero,peso,altura,nacionalidad):
     query = "UPDATE people SET fullname = %s, profession = %s, birth = %s, genre=%s,bodyweight=%s,height=%s,nationality=%s WHERE id = %s"
     val = (nombre,profesion,fecha,genero,peso,altura,nacionalidad,id)
     cursor.execute(query,val)
+    conexion.commit()
+
+def eliminar_persona(p):
+    query = "DELETE FROM people WHERE id = %s"
+    values = (p.get_id(),)
+    cursor.execute(query,values)
     conexion.commit()

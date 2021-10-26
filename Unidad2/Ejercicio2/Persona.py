@@ -34,3 +34,26 @@ class Persona:
 
     def set_fullname(self,fullname):
         self.__fullname = fullname
+    
+    def set_profession(self,profession):
+        self.__profession = profession
+
+    def set_genre(self,genre):
+        self.__genre = genre
+
+    def set_birth(self,birth):
+        self.__birth = birth
+
+    def set_bodyweight(self,bodyweight):
+        self.__bodyweight = bodyweight
+
+    def set_height(self,height):
+        self.__height = height
+    
+    def set_nationality(self,nationality):
+        self.__nationality = nationality
+
+    def get_id(self):
+        return self.__id
+    
+    
